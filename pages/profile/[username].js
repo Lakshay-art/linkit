@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 import axios from 'axios';
 import styles from '../../styles/Profile.module.css'
 import Search from '../../components/Search';
-import Settings from '../../components/settings';
+import Settings from '../../components/Settings';
 const profile = (props) => {
     const [visits, setvisits] = React.useState(0)
     const router=useRouter();

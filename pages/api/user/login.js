@@ -3,12 +3,12 @@ import User from "../../../models/User";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 const generateAccesssToken=(user)=>{
-    return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},"mysecretkey",{
+    return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},process.env.SECRET_KEY,{
         expiresIn:"100s",
     })
  }
  const generateRefreshToken =(user)=>{
-    return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},"myrefreshsecretkey",{
+    return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},process.env.RSECRET_KEY,{
         expiresIn:"100000s",
     })
  }

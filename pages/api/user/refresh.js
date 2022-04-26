@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken'
 const generateAccesssToken=(user)=>{
-   return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},"mysecretkey",{
+   return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},process.env.SECRET_KEY,{
        expiresIn:"100s",
    })
 }
 const generateRefreshToken =(user)=>{
-    return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},"myrefreshsecretkey",{
+    return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},process.env.RSECRET_KEY,{
         expiresIn:"100000s",
     })
  }
@@ -15,7 +15,7 @@ export default async function(req,res){
         const refreshToken=req.body.token;
         if(!refreshToken)
         return res.status(401).send("You are not Authenicated");
-        jwt.verify(refreshToken,'myrefreshsecretkey',(err,user)=>{
+        jwt.verify(refreshToken,process.env.RSECRET_KEY,(err,user)=>{
             err && console.log(err)
             if(err)
             return res.status(500).send(err);

@@ -21,6 +21,7 @@
     "cloudinary": "^1.29.0",
     "cloudinary-react": "^1.7.2",
     "cookie": "^0.4.2",
+    "dotenv": "^16.0.0",
     "fs": "^0.0.1-security",
     "jquery": "^3.6.0",
     "js-cookie": "^3.0.1",

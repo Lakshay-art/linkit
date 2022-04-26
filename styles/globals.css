@@ -1,0 +1,31 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    /* background:linear-gradient(45deg, #33ccff 0%, #ff99cc 100%); */
+    background-color: whitesmoke;
+    /* color: rgba(245, 245, 245, 0.945); */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+@media (max-width: 425px) {
+  body {
+    zoom:75%;
+  
+  }
+} 
+@media (max-width: 375px) {
+  body {
+    zoom:65%;
+  
+  }
+} 

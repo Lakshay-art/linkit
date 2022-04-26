@@ -1,0 +1,28 @@
+#items { 
+    width:300px; 
+}
+
+.item { 
+   width:100px; 
+   border:solid 1px #ccc;
+   float:left;
+   height:20px;
+   z-index:0;
+   overflow:hidden;
+   position:relative; 
+}  
+
+.item:hover {
+   overflow:visible;
+   z-index:100;
+}
+
+.item:hover .inner { 
+   z-index: 100;
+}
+
+.inner { 
+   position: absolute;
+   background: white;
+   width: 100%;
+}

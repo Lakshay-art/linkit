@@ -138,7 +138,7 @@ const settings = () => {
 
   const newusername=new React.createRef();
   const newpassword=new React.createRef();
-  const cloudName =process.env.CLOUD_NAME; // replace with your own cloud name
+  const cloudName ="lakshaythegupta"; // replace with your own cloud name
 const uploadPreset = "hello1"; // replace with your own upload preset
 
 // Remove the comments from the code below to add

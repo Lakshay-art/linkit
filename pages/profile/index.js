@@ -1,13 +1,13 @@
 import jsCookie from 'js-cookie';
 import React from 'react';
-import { useEffect } from 'react/cjs/react.production.min';
+
 import Friends from '../../components/Friends';
 //import Profile from '../components/Profile'
 import { server } from '../../config';
 import {parseCookies} from '../../lib/parseCookie'
 import {useRouter} from 'next/router'
 import Search from '../../components/Search';
-import Settings from '../../components/settings';
+import Settings from '../../components/Settings';
 import Head from 'next/head';
 import axios from 'axios';
 

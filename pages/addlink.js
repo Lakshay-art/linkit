@@ -60,7 +60,7 @@ React.useEffect(async()=>{
 // console.log(accessTokenn);
 // setaccess(accessTokenn);
   
-
+console.log(process.env.SECRET_KEY)
 
 },[])
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { config } from 'dotenv';
+//import { config } from 'dotenv';
 import jsCookie from 'js-cookie';
-require('dotenv').config();
+//require('dotenv').config();
 import Layout from '../components/Layout'
 import '../styles/globals.css'
 

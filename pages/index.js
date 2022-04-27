@@ -22,7 +22,7 @@ export default function Home({ articles }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${server}/api/articles`)
+  const res = await fetch(`http://localhost:3000/api/articles`)
   const articles = await res.json()
 
   return {

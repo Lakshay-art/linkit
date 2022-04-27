@@ -2,12 +2,8 @@
   "name": "linkerr",
   "version": "0.1.0",
   "main":"index.js",
-  "private": true,
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
-  },
+ 
+  
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,6 +1,7 @@
 {
-  "name": "next-crash-course",
+  "name": "linkerr",
   "version": "0.1.0",
+  "main":"index.js",
   "private": true,
   "browser": {
     "fs": false,

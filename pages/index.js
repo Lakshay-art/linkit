@@ -21,15 +21,15 @@ export default function Home({ articles }) {
   )
 }
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`api/articles`)
+export const getStaticProps = async () => {
+  const res = await fetch(`${server}/api/articles`)
   const articles = await res.json()
 
   return {
     props: {
       articles,
     },
-      //  revalidate:10
+        revalidate:10
   }
 
   

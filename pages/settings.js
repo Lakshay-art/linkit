@@ -148,7 +148,7 @@ const uploadPreset = "hello1"; // replace with your own upload preset
 // can add see:
 //   https://cloudinary.com/documentation/upload_widget_reference
 //const [accesss, setaccesss] = React.useState();
-const theaxios=axios.create();
+// const theaxios=axios.create();
 React.useEffect(async()=>{
   $('#passwordinput').slideUp('slow');
   $('#usernameinput').slideUp('slow');
@@ -247,7 +247,7 @@ await (await newaxios()).post(`${server}/api/user/deleteoldpfp`,{
  }
 jsCookie.set("pfp",result.info.public_id);
 
-  await (await newaxios()).post(`/api/user/setpfp`,{
+  await (await newaxios()).post(`${server}/api/user/setpfp`,{
     username:jsCookie.get('username'),
     public_id:result.info.public_id,
   }).then((res)=>{},(err)=>{console.log(err+" -=====================")})
@@ -267,7 +267,7 @@ const openpwdchangeinput=()=>{
   $('#passwordinput').slideToggle('slow');
 }
 const changepwd=async()=>{
-  await (await newaxios()).post("/api/user/changepassword",{
+  await (await newaxios()).post(`${server}/api/user/changepassword`,{
     userid:jsCookie.get("id"),
     password:newpassword.current.value,
   })

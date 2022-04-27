@@ -28,7 +28,7 @@ React.useEffect(async()=>{
     if(jsCookie.get("username")!=undefined)
     setvisits(props.friendslist.userinfo?.visits);
     if(jsCookie.get("id2") && jsCookie.get("loggedin")!="true")
-    await axios.post("/api/user/refresh",{
+    await axios.post(`${server}/api/user/refresh`,{
         token:jsCookie.get("id2")
     }).then((res)=>{
     //   

@@ -40,6 +40,7 @@ export default async function handler (req, res) {
     case 'GET':
       try {
         const links = await Link.find({})
+        //console.log(links)
         res.json([...links])
       } catch (error) {
         res.json({ success: false })
@@ -47,7 +48,7 @@ export default async function handler (req, res) {
       break
     case 'POST':
       try {
-        const username=req.body.username;
+       // const username=req.body.username;
        await Link.find({},(err,userdata)=>{
          if(err){
            //res.json([])

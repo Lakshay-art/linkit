@@ -26,7 +26,7 @@ export const getServerSideProps = async () => {
   //  const res = await fetch(`http://localhost:3000/api/articles`)
   //  const articles = await res.json()
    var articles
-   await axios.post(`${server}/api/articles`,{}).then((res)=>{
+   await axios.post(`/api/articles`,{}).then((res)=>{
      articles=res.data;
    },(err)=>{
      console.log(err)

@@ -65,16 +65,23 @@ export const getServerSideProps= async(request)=>{
     }else{
         search=cookies.search
     }
-    const res=await fetch(`${server}/api/articles/profile`
-    ,{
-        method:"POST",
-        body:JSON.stringify({username:search}),
-        headers:{
-            "Content-Type":"application/json"
-        }
-    }
-    );
-    const friendslist=await res.json();
+    // const res=await fetch(`${server}/api/articles/profile`
+    // ,{
+    //     method:"POST",
+    //     body:JSON.stringify({username:search}),
+    //     headers:{
+    //         "Content-Type":"application/json"
+    //     }
+    // }
+    // );
+    var friendslist;
+    await axios.post(`${server}/api/articles/profile`,{
+        username:search,
+    }).then((res)=>{
+      friendslist=res.data},(err)=>{
+          
+      })
+    //const friendslist=await res.json();
      console.log("--------------"+friendslist+"---------------------------");
     return{
         props:{

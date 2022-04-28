@@ -78,16 +78,24 @@ export const getServerSideProps= async(request)=>{
     //     }
     // }} trying to use jscookie here but error
     const cookies=parseCookies(request.req);
-    const res=await fetch(`${server}/api/articles/profile`
-    ,{
-        method:"POST",
-        body:JSON.stringify({username:cookies.username}),
-        headers:{
-            "Content-Type":"application/json"
-        }
-    }
-    );
-    const friendslist=await res.json();
+    // const res=await fetch(`${server}/api/articles/profile`
+    // ,{
+    //     method:"POST",
+    //     body:JSON.stringify({username:cookies.username}),
+    //     headers:{
+    //         "Content-Type":"application/json"
+    //     }
+    // }
+    // );
+    var friendslist;
+    await axios.post(`${server}/api/articles/profile`,{
+        username:cookies.username,
+    }).then((res)=>{
+      friendslist=res.data},(err)=>{
+          
+      })
+    //const friendslist=await res.json();
+
     return{
         props:{
             friendslist,

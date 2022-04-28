@@ -13,11 +13,12 @@ export default function Home({ articles,article }) {
     //setsearch(searchprofile.current.value)
 //}
   return (
-    <div>{console.log(articles)}
+    <div>
+      {/* {console.log(articles)} */}
       <Search/>
       {/* <input type="text" ref={searchprofile}/> */}
         {/* <button onClick={submit}>Search</button> */}
-      <Friends friendslist={article} />
+      <Friends friendslist={articles} />
     </div>
   )
 }

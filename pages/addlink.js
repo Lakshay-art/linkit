@@ -4,8 +4,11 @@ import jsCookie from 'js-cookie';
 import router from 'next/router';
 import React from 'react';
 import styles from '../styles/Addlink.module.css'
+import style from '../styles/Toast.module.css'
 import { server } from '../config';
 import newaxios from '../lib/customaxios'
+import Toast from '../components/toast'
+import {toast} from '../lib/toast'
 
 
 import jwt_decode from 'jwt-decode'
@@ -60,7 +63,7 @@ React.useEffect(async()=>{
 // console.log(accessTokenn);
 // setaccess(accessTokenn);
   
-console.log(process.env.SECRET_KEY)
+//console.log(process.env.SECRET_KEY)
 
 },[])
 
@@ -69,7 +72,7 @@ title.current.value=router.query?.title||"";
 description.current.value=router.query?.description||"";
 link.current.value=router.query?.link||"";
 setuser({...user,id:jsCookie.get('id'),'username':router.query?.username||user.username});
-console.log(user.username);
+//console.log(user.username);
 },[])
 
 
@@ -103,7 +106,7 @@ console.log(user.username);
     const upload=async()=>{
         let tag="other";
         for(let keys of map.keys()){
-            console.log(keys)
+           // console.log(keys)
             if(link.current.value.includes(keys))
             {
                 tag=keys;
@@ -111,7 +114,7 @@ console.log(user.username);
             }
         }
         
-        console.log(map.get(tag));
+      //  console.log(map.get(tag));
        await(await newaxios()).post(`${server}/api/articles/addlink`,{
             'username':user.username,
             'id':user.id,
@@ -121,8 +124,9 @@ console.log(user.username);
             'color':map.get(tag),
             'tag':tag,
             'visits':router.query?.visits||0
-        }).then((res)=>{console.log(res.data)},(err)=>{
-
+        }).then((res)=>{//console.log(res.data)
+          toast("Success!! Link Uploaded") ;},(err)=>{
+            toast("Check your internet connection or Re-login")
         })
     }
 

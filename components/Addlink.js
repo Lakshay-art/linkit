@@ -50,16 +50,16 @@ const redirectit=()=>{
     const upload=()=>{
         let tag="other";
         for(let keys of map.keys()){
-            console.log(keys+" "+map.get(keys))
+            // console.log(keys+" "+map.get(keys))
             if(link.current.value.includes(keys))
             {
                 tag=keys;
                 break;
             }
         }
-        console.log(map);
+       // console.log(map);
         
-        console.log(map.get(tag));
+      //  console.log(map.get(tag));
         axios.post(`${server}/api/articles/addlink`,{
             'username':user.username,
             'id':user.id,

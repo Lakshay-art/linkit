@@ -5,6 +5,7 @@ import React from 'react';
 import styles from '../styles/Login.module.css'
 import { server } from '../config';
 import $ from 'jquery'
+import {toast} from '../lib/toast'
 
 const login = () => {
    const[state,setstat]=React.useState('login');
@@ -29,8 +30,8 @@ const login = () => {
             jsCookie.set("id",res.data.id);
             jsCookie.set("loggedin","true");
             jsCookie.set("id2",res.data.refreshToken,{ expires: 30 });
-            console.log(res.data)
-            console.log("----------------------j------")
+           // console.log(res.data)
+           // console.log("----------------------j------")
             jsCookie.set("pfp",res.data.profilepic);
             if(res.data.refreshToken)
             router.push("/profile");
@@ -38,9 +39,10 @@ const login = () => {
         },(err)=>{
             if (err.response) {
                 /* The request was made and the server responded with a status code that falls out of the range of 2xx*/
-                alert(err.response.data);
+                // alert();
+                toast(err.response.data)
               } else {
-                console.log("Error", err.message);
+                toast(err.message)
               }
         })
     }
@@ -51,13 +53,14 @@ else if(state=='register'){
             password:password.current.value,
             email:email.current.value,
         }).then((res)=>{
-            console.log(res.data);
+           // console.log(res.data);
+           toast("Registered Successfully!!")
         },(err)=>{
             if (err.response) {
                 /* The request was made and the server responded with a status code that falls out of the range of 2xx*/
-                alert(err.response.data);
+                toast(err.response.data)
               } else {
-                console.log("Error", err.message);
+                toast(err.message)
               }
         })
 
@@ -90,6 +93,7 @@ else if(state=='register'){
          jsCookie.remove('id2');
          jsCookie.remove('id');
          jsCookie.set("loggedin","false");
+         toast("Logged Out Successfully")
 
      }
   

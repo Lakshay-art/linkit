@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import navStyles from '../styles/Nav.module.css'
 import Image from 'next/image'
+import style from '../styles/Toast.module.css'
 const Nav = () => {
-  return (
+  return (<>
     <nav className={navStyles.nav}>
       <ul> 
         <li className={navStyles.img}>
@@ -26,6 +27,9 @@ const Nav = () => {
         </li> */}
       </ul>
     </nav>
+    <div id={style.snackbar}></div>
+
+    </>
   )
 }
 

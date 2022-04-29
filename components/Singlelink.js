@@ -14,7 +14,7 @@ const Singlelink = (props) => {
     
     const [surelyDelete, setsurelyDelete] = React.useState("false")
     //const [opendis, setopendis] = React.useState("false")
-    console.log(props);
+    //console.log(props);
     const askToDelete=()=>{
         setsurelyDelete("true");
     }
@@ -40,7 +40,7 @@ const Singlelink = (props) => {
           setsurelyDelete("false");
     }
     const openlink=async()=>{
-        console.log(props);
+        //console.log(props);
         await axios.post(`${server}/api/articles/addvisit`,{
             username:jsCookie.get("username"),
             linkid:props.details._id,
@@ -50,7 +50,7 @@ const Singlelink = (props) => {
         },(err)=>{
             console.log(err)
         })
-       console.log(props);
+      // console.log(props);
     }
     React.useEffect(async()=>{
          $(`#${props.details._id}`).hide('slow');
@@ -63,20 +63,20 @@ const Singlelink = (props) => {
    var timeoutid1;
  const opendisfunc=()=>{
      //setopendis("true");
-     console.log( );
-     console.log( document.getElementById(`${props.details._id}`).getBoundingClientRect())
+    // console.log( );
+   //  console.log( document.getElementById(`${props.details._id}`).getBoundingClientRect())
      //if($(window).width()> (420)){
            //$(`#${props.details._id}2`).css( "maxWidth",300) ;
            $(`#${props.details._id}`).css( "maxWidth",$(`#${props.details._id}2`).width()-10) ;
    //  }
       
-      console.log($(`#${props.details._id}2`).width()-16);
+     // console.log($(`#${props.details._id}2`).width()-16);
       //( $( window ).width() * 0.2 | 0 ) + "px" )
     if (timeoutid1) {
-        console.log("out")
+    //    console.log("out")
           return;
        }
-       console.log("evenout")
+    //   console.log("evenout")
      $(`#${props.details._id}`).show('slow');
      
        

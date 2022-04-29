@@ -133,6 +133,7 @@ import refresh from '../lib/callrefresh';
 import React from 'react';
 import jsCookie from 'js-cookie';
 import newaxios from '../lib/customaxios'
+import { toast } from '../lib/toast';
 
 const settings = () => {
 
@@ -213,7 +214,7 @@ document.getElementById("upload_widget").addEventListener(
          setpfp(result);
           
         }
-        console.log(result+"-----------------"+error)
+       // console.log(result+"-----------------"+error)
       }
     );
     myWidget.open();
@@ -242,7 +243,7 @@ const setpfp=async(result)=>{
  if(jsCookie.get("pfp")!="default"){
 await (await newaxios()).post(`${server}/api/user/deleteoldpfp`,{
   public_id:jsCookie.get("pfp")
-}).then((res)=>{console.log(res)},(err)=>{console.log(err+" -=====================")})
+}).then((res)=>{},(err)=>{console.log(err+" -=====================")})
 
  }
 jsCookie.set("pfp",result.info.public_id);
@@ -250,14 +251,18 @@ jsCookie.set("pfp",result.info.public_id);
   await (await newaxios()).post(`${server}/api/user/setpfp`,{
     username:jsCookie.get('username'),
     public_id:result.info.public_id,
-  }).then((res)=>{},(err)=>{console.log(err+" -=====================")})
+  }).then((res)=>{
+    toast("Success!! Profile Pic Changed") 
+  },(err)=>{console.log(err+" -=====================");
+toast(err);})
 }
 
 const changeusername=async()=>{
   await (await newaxios()).post(`${server}/api/user/changeusername`,{
     newusername:newusername.current.value,
     user:jsCookie.get("id"),
-  }).then((res)=>{jsCookie.set("username",newusername.current.value)},(err)=>{console.log(err+" -=====================")})
+  }).then((res)=>{jsCookie.set("username",newusername.current.value);toast("Success!! User Name Changed") },(err)=>{console.log(err+" -=====================");
+  toast(err);})
 }
 
 const openusernamechangeinput=()=>{
@@ -270,7 +275,9 @@ const changepwd=async()=>{
   await (await newaxios()).post(`${server}/api/user/changepassword`,{
     userid:jsCookie.get("id"),
     password:newpassword.current.value,
-  })
+  }).then((res)=>{toast("Success!! Password Changed") },(err)=>{console.log(err+" -=====================");
+  toast(err);})
+
 }
   return (
     <>

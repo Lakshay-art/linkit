@@ -70,7 +70,7 @@ React.useEffect(async()=>{
     );
 };
 export const getServerSideProps= async(request)=>{
-    console.log(request.params);
+   // console.log(request.params);
     // if(jsCookie.get("username")==undefined){
     // return{
     //     props:{

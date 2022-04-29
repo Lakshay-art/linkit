@@ -13,14 +13,14 @@ import Settings from '../../components/Settings';
 const profile = (props) => {
     const [visits, setvisits] = React.useState(0)
     const router=useRouter();
-    console.log(props)
+   // console.log(props)
 //      React.useEffect(()=>{
 //    console.log(jsCookie.get("username"));
 //    //jsCookie.set("username",);
 //      },[jsCookie.get("search")])
 
 React.useEffect(async()=>{
-         console.log(props.friendslist.userinfo);
+       //  console.log(props.friendslist.userinfo);
          //console.log("8888888")
        if(props.friendslist.userinfo==null){
            setvisits("-1");
@@ -82,7 +82,7 @@ export const getServerSideProps= async(request)=>{
           
       })
     //const friendslist=await res.json();
-     console.log("--------------"+friendslist+"---------------------------");
+    // console.log("--------------"+friendslist+"---------------------------");
     return{
         props:{
             friendslist,

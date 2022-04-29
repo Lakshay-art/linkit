@@ -81,7 +81,7 @@ export default async function handler (req, res) {
       } catch(error) {
        //return res.json([])
        return;
-       console.log(error+"0000909090909090909090")
+       //console.log(error+"0000909090909090909090")
       }
       break
     default:

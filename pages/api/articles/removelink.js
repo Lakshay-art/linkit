@@ -12,7 +12,7 @@ export default async function handler(req,res){await dbConnect();
     var {username,linkid}=req.body;
     if(username==    infofromheaders.username)
 {
-       console.log(username+" "+linkid)
+     //  console.log(username+" "+linkid)
         await Link.findOneAndDelete({_id:linkid},(err,ans)=>{
             if(err)
         return res.status(404).send(err);
@@ -22,7 +22,8 @@ export default async function handler(req,res){await dbConnect();
         }
     }
     catch(err){
-    return console.log("first");
+    return 
+   // console.log("first");
     }
    return ;
 }

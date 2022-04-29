@@ -14,7 +14,7 @@ export default async function handler(req,res){
             if(err)
             return console.log(err+"in changeusername");
             else
-            return res.status(200).json(response);
+            return res.status(200).send("Username Changed");
         })
      }
      catch(err){

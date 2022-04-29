@@ -19,7 +19,7 @@ export default async function(req,res){
             err && console.log(err)
             if(err)
             return res.status(500).send(err);
-            console.log(user);
+           // console.log(user);
             const newAccessToken=generateAccesssToken(user);
             const newRefreshToken=generateRefreshToken(user);
             res.status(200).json({

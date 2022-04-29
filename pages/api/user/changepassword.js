@@ -14,8 +14,8 @@ export default async function handler(req,res){
          User.findOneAndUpdate({_id:userid},{password:newpassword},(err,response)=>{
              if(err)
              return console.log(err) ;
-             console.log("pwd changed")
-             return res.status(200).send(response);
+             //console.log("pwd changed")
+             return res.status(200).send("Password Changed");
          })
 
     }

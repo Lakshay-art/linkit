@@ -21,7 +21,7 @@ const Profile = () => {
             await axios.post(`${server}/api/articles/profile`,{
                 username:localStorage.getItem('username')
             }).then((res)=>{
-                console.log(res.data);
+               // console.log(res.data);
                     if(res.data!=undefined)
                     setlist(res.data);
             },(err)=>{
@@ -33,7 +33,7 @@ const Profile = () => {
 
     return (
         <>
-        {console.log(list)}
+        {/* {console.log(list)} */}
             <Friends friendslist={list}/>
         </>
     );

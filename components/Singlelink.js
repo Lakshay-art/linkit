@@ -62,6 +62,9 @@ const Singlelink = (props) => {
     })
    var timeoutid1;
  const opendisfunc=()=>{
+     if($(window).width()<450)
+     return;
+     console.log($(window).width())
      //setopendis("true");
     // console.log( );
    //  console.log( document.getElementById(`${props.details._id}`).getBoundingClientRect())
@@ -89,6 +92,8 @@ const Singlelink = (props) => {
      return;
  }
  const hidedisfunc=()=>{
+    if($(window).width()<450)
+    return;
     //setopendis("true");
     $(`#${props.details._id}`).hide('slow');
     // 
@@ -114,7 +119,7 @@ const edit=()=>{
 }
     return (
         <div>
-        <div id={props.details._id+'2'} onTouchStart={opendisfunc} onMouseEnter={opendisfunc} onTouchEnd={hidedisfunc} onMouseLeave={hidedisfunc} onDoubleClick={edit} className={styles.card} style={{background:`${props.details.color}`}} >
+        <div id={props.details._id+'2'} onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc} onDoubleClick={edit} className={styles.card} style={{background:`${props.details.color}`}} >
             { 
               <a className={styles.border} onClick={gotoprofile} >{props.details.username}</a>
              
@@ -124,7 +129,7 @@ const edit=()=>{
             </h2>
             
             <div className={styles.flex}>
-                <p style={{paddingRight:"10px"}}>{props.details.visits} visits</p>
+                <p style={{paddingRight:"10px",fontSize:"14px"}}>{props.details.visits} visits</p>
             {jsCookie.get("username")==props.details.username &&
              surelyDelete=="false" && <span onClick={askToDelete}><Image src="/delete.png" width="30px" height="30px"/></span>
           }

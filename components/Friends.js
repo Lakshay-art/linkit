@@ -4,7 +4,7 @@ import Singlelink from './Singlelink';
 import styles from '../styles/Article.module.css'
 const Friends = ({friendslist}) => {
     //const shuffledArray = friendslist.sort((a, b) =>Math.random()-0.5)
-
+ //friendslist.splice(1,1) ;
     return (
         <div className={styles.grid}>
             {

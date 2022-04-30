@@ -16,7 +16,7 @@ const Nav = () => {
           <Link href='/friends'>Friends</Link>
         </li> */}
         <li>
-          <Link href='/profile'>My Profile</Link>
+          <Link href='/profile'>MyProfile</Link>
         </li>
        
          {/*<li>

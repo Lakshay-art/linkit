@@ -64,7 +64,7 @@ const Singlelink = (props) => {
  const opendisfunc=()=>{
      if($(window).width()<450)
      return;
-     console.log($(window).width())
+    // console.log($(window).width())
      //setopendis("true");
     // console.log( );
    //  console.log( document.getElementById(`${props.details._id}`).getBoundingClientRect())

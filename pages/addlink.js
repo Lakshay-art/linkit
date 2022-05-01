@@ -71,7 +71,7 @@ React.useEffect(()=>{
 title.current.value=router.query?.title||"";
 description.current.value=router.query?.description||"";
 link.current.value=router.query?.link||"";
-setuser({...user,id:jsCookie.get('id'),'username':router.query?.username||user.username});
+setuser({...user,id:jsCookie.get('id'),'username':(router.query && router.query?.username)||jsCookie.get('username')});
 //console.log(user.username);
 },[])
 
@@ -126,6 +126,7 @@ setuser({...user,id:jsCookie.get('id'),'username':router.query?.username||user.u
             'visits':router.query?.visits||0
         }).then((res)=>{//console.log(res.data)
           toast("Success!! Link Uploaded") ;},(err)=>{
+              console.log(err)
             toast("Check your internet connection or Re-login")
         })
     }

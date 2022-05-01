@@ -7,7 +7,7 @@ const Nav = () => {
     <nav className={navStyles.nav}>
       <ul> 
         <li className={navStyles.img}>
-          <Link  href='/login'><a><Image src="/admin3.png" width="55px" height="55x"/></a></Link>
+          <Link  href='/login'><a><Image className={navStyles.image} src="/admin3.png" width="55px" height="55x"/></a></Link>
         </li>
         <li>
           <Link href='/'>EveryOne</Link>

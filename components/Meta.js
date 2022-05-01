@@ -9,6 +9,7 @@ const Meta = ({ title, keywords, description }) => {
       <meta charSet='utf-8' />
       {/* <link rel='icon' href='/favicon.ico' /> */}
       <link rel="icon" href="/icon2.png"></link>
+      <link rel="apple-touch-icon" href="/icon2.png"></link>
       <title>{title}</title>
     </Head>
   )

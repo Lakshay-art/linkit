@@ -4,7 +4,8 @@ import jsCookie from 'js-cookie';
 //require('dotenv').config();
 import Layout from '../components/Layout'
 import '../styles/globals.css'
-
+import React from 'react'
+import $ from 'jquery'
  function  MyApp({ Component, pageProps }) {
 //   const access=await refresh(jsCookie.get("id2"));
 //   axios.interceptors.request.use(
@@ -28,6 +29,14 @@ import '../styles/globals.css'
 //         return Promise.reject(err);
 //     }
 // ) 
+React.useEffect(() => {
+  let width=$(window).width();
+  let height=$(window).height();
+  let zoom=100-((1668600-(width*height))/40000)
+   console.log(zoom);
+  $(document.body).css('zoom',zoom/100)
+}, [])
+
 
   return (
     <Layout>

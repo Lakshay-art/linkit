@@ -5,10 +5,14 @@ import User from "../../../models/User"
 export default async function handler(req,res){
      try{
         await dbConnect();
-        const infofromheaders=verify(req)||{username:''} ;
+        const infofromheaders=verify(req)||{_id:''} ;
      
       const user=infofromheaders._id; 
+
         const {newusername}=req.body;
+        const alreadyexisted =await User.findOne({username:newusername});
+        console.log("alreadyexisted"+alreadyexisted)
+        if(!alreadyexisted){
         await User.updateOne({_id:user},{username:newusername});
         await Link.updateMany({user:user},{username:newusername},(err,response)=>{
             if(err)
@@ -17,7 +21,13 @@ export default async function handler(req,res){
             return res.status(200).send("Username Changed");
         })
      }
+     return res.status(500).send("User already Exists!! Try different name")
+     //sconst a=10/0;
+    }
      catch(err){
-         return console.log(err+"in changeusername");
+return console.log(err+"in changeusername");
+        //  return res.send("User already Exists!! Try different name")
+         
      }
+     //return ;
 }

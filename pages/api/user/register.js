@@ -21,7 +21,7 @@ export default async function(req,res){
     let salt=await bcrypt.genSalt(10);
     password= await bcrypt.hash(password,salt)
 
-    const newuser=await new User({username,email,password,isAdmin:"false",isPremium:"false",visits:"0",profilepic:"default"});
+    const newuser=await new User({username,email,password,isAdmin:"false",isPremium:"false",visits:"0",profilepic:"default",nooflinks:"0"});
 
     await newuser.save();
 await res.status(200).send("registered")

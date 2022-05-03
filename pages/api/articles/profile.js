@@ -75,8 +75,15 @@ export default async function handler (req, res) {
            //res.json([])
            console.log(error+"--------")
          }
+         let sorteddata=userdata.sort((a,b)=>{
+        
+           let x=a.priority==undefined?0:a.priority;
+           let y=b.priority==undefined?0:b.priority; 
+            // console.log(x+" "+y)
+           return y-x;
+         })
         // console.log([...userdata]+" "+userinfo+"#########################");
-         return res.status(200).json({userdata:[...userdata],userinfo})
+         return res.status(200).json({userdata:[...sorteddata],userinfo})
        })
       } catch(error) {
        //return res.json([])

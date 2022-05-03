@@ -6,7 +6,7 @@ import { server } from '../config';
 import styles from '../styles/Article.module.css'
 import Image from 'next/image'
 import $ from 'jquery'
-import newaxios from '../lib/customaxios'
+
 //import script from 'next/script'
 import { useEffect } from 'react/cjs/react.production.min';
 //import { route } from 'next/dist/next-server/server/router';
@@ -22,23 +22,7 @@ const Singlelink = (props) => {
     const gotoprofile=()=>{
         router.replace(`/profile/${props.details.username}`)
     }
-    const deletelink=async()=>{
-       // const newaxios=
-          await (await newaxios()).post(`${server}/api/articles/removelink`,{
-              username:jsCookie.get("username"),
-              linkid:props.details._id,
-          }).then((res)=>{
-            router.replace(router.asPath);
-
-            //   if(router.pathname=="/profile")
-            //   router.push('/profile');
-            //   if(router.pathname=="/")
-            //   router.push('/');
-          },(err)=>{
-              console.log(err)
-          })
-          setsurelyDelete("false");
-    }
+  
     const openlink=async()=>{
         //console.log(props);
         await axios.post(`${server}/api/articles/addvisit`,{
@@ -52,14 +36,21 @@ const Singlelink = (props) => {
         })
       // console.log(props);
     }
+    React.useEffect(()=>{
+ $(`#${props.details._id}`).hide('slow');
+    })
     React.useEffect(async()=>{
-         $(`#${props.details._id}`).hide('slow');
+        
          if(props.details.tag=="spotify"){
              $(`#${props.details._id}2`).css('color',"black")
          }
+         else{
+            $(`#${props.details._id}2`).css('color',"#eaeaea")
+
+         }
          //console.log(await newaxios());
          //console.log(axios);
-    })
+    },[props])
    var timeoutid1;
  const opendisfunc=()=>{
      if($(window).width()<450)
@@ -117,9 +108,13 @@ const edit=()=>{
     }
     }, '/addlink');
 }
+
+const deletee=()=>{props.delete(props.details) ;
+     setsurelyDelete("false")}
     return (
-        <div>
-        <div id={props.details._id+'2'} onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc} onDoubleClick={edit} className={styles.card} style={{background:`${props.details.color}`}} >
+        <div >
+        <div id={props.details._id+'2'} onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc} onDoubleClick={edit} className={styles.card} style={{background:`${props.details.color}`}} draggable="true" onDrag={()=>props.ondrag(props.details) } onDragOver={()=>props.dragover(props.details) } onDragEnd={()=>props.drop()} >
+            
             { 
               <a className={styles.border} onClick={gotoprofile} >{props.details.username}</a>
              
@@ -134,7 +129,7 @@ const edit=()=>{
              surelyDelete=="false" && <span onClick={askToDelete}><Image src="/delete.png" width="30px" height="30px"/></span>
           }
           {
-              surelyDelete=="true" && <span onClick={deletelink}>Delete</span>
+              surelyDelete=="true" && <span onClick={deletee}>Delete</span>
           }</div>
           
           {/* opendis=="true" &&  */}

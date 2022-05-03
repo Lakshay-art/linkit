@@ -1,7 +1,8 @@
 #snackbar {
   visibility: hidden;
   min-width: 250px;
-  margin-left: -125px;
+  max-width: 250px;
+  /* margin-left: -125px; */
   background:linear-gradient(45deg, #88cef7 0%,#30b3ff 30%,#ff87f1 100%);
   color: #fff;
   border-radius: 30px ;
@@ -10,9 +11,16 @@
   padding: 16px;
   position: fixed;
   z-index: 100;
-  left: 50%;
-  bottom: 30px;
+  /* left: 50%; */
+
   font-size: 17px;
+
+  /* width: 40%; */
+position: fixed;
+left: 50%;
+  bottom: 30px;
+  /* margin-left: 5px; */
+margin-left: -125px;
 }
 
 #snackbar.show {

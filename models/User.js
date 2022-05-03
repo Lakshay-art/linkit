@@ -8,6 +8,7 @@ const UserSchema=new mongoose.Schema({
     isPremium:{type:String,required:true},
     visits:{type:String},
     profilepic:{type:String},
+    nooflinks:{type:String}
 },{timestamps:true})
 
 //const User=mongoose.model('user',UserSchema);

@@ -16,7 +16,7 @@ export default async function handler(req,res){
         }
         const user=id;
         const Linkk=await new Link({
-            username,user,title,description,link,visits,color,tag
+            username,user,title,description,link,visits,color,tag,priority:"0"
         }) 
         await Linkk.save();
         return res.status(200).send(Linkk);

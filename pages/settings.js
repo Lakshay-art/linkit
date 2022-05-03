@@ -134,6 +134,9 @@ import React from 'react';
 import jsCookie from 'js-cookie';
 import newaxios from '../lib/customaxios'
 import { toast } from '../lib/toast';
+import Router from 'next/dist/next-server/server/router';
+import rouer from 'next/router'
+import router from 'next/router';
 
 const settings = () => {
 
@@ -261,8 +264,8 @@ const changeusername=async()=>{
   await (await newaxios()).post(`${server}/api/user/changeusername`,{
     newusername:newusername.current.value,
     user:jsCookie.get("id"),
-  }).then((res)=>{jsCookie.set("username",newusername.current.value);toast("Success!! User Name Changed") },(err)=>{console.log(err+" -=====================");
-  toast(err);})
+  }).then((res)=>{jsCookie.set("username",newusername.current.value);toast("Success!! Sign in with new username") ;jsCookie.set("id2","");router.push('/login')},(err)=>{console.log(err+" -=====================");
+  toast(err.response.data);})
 }
 
 const openusernamechangeinput=()=>{
@@ -287,9 +290,9 @@ const changepwd=async()=>{
         {/* <hr className={styles.hr}/> */}
         <div className={styles.div}> <button className={styles.button} id="upload_widget">Change Profile Pic</button></div>
         <div className={styles.div}> <button className={styles.button} onClick={openusernamechangeinput}>Change Username</button></div>
-        <div className={styles.div} id="usernameinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2}><p className={styles.input2}>New Username</p> <input style={{float:"left",paddingRight:"40px"}} className={styles.input} type="text" ref={newusername}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changeusername}  src="/add.png" width="30px" height="30px"/></span></div>
+        <div className={styles.div} id="usernameinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2}><p className={styles.input2}>New Username</p> <input style={{float:"left",paddingRight:"40px"}} className={styles.input} type="text" ref={newusername}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changeusername}  src="/tick.png" width="40px" height="40px"/></span></div>
         <div className={styles.div}> <button  className={styles.button} onClick={openpwdchangeinput}>Change Password</button></div>
-        <div className={styles.div} id="passwordinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2} ><p className={styles.input2}>New Password</p> <input style={{float:"left",paddingRight:"40px"}} className={styles.input} type="text" ref={newpassword}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changepwd} src="/add.png" width="30px" height="30px"/></span></div>
+        <div className={styles.div} id="passwordinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2} ><p className={styles.input2}>New Password</p> <input style={{float:"left",paddingRight:"40px"}} className={styles.input} type="text" ref={newpassword}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changepwd} src="/tick.png" width="40px" height="40px"/></span></div>
 
          <div className={styles.div}> <button className={styles.button} >Buy Premium</button></div>
         {/* <button onClick={()=>setpfp("poda")} id="update">Update</button> */}

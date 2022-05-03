@@ -25,17 +25,19 @@ const settingsopen=()=>{
     return (
         <>
         <div className={styles.flex}>
+            <div>
             { jsCookie.get("search")==jsCookie.get("username") && jsCookie.get("search")!=undefined &&
-                 <span onClick={settingsopen}><Image src="/setting.png" width="50px" height="50x"/></span>
-            }
+                 <span onClick={settingsopen}><Image src="/setting.png" width="50px" height="50px"/></span>
+            }</div>
        
             <input className={styles.input} type="text" ref={searchprofile}/>
             <span className={styles.search} onClick={submit}><Image src="/search2.png" width="40px" height="40x"/></span>
             {/* <Image src="/public/" width="30px" height="30px"/> */}
+            <div>
             { jsCookie.get("search")==jsCookie.get("username") && jsCookie.get("search")!=undefined &&
-                <span className={styles.add} onClick={addlink}><Image src="/add.png" width="50px" height="50x"/></span>
+                <span className={styles.add} onClick={addlink}><Image src="/add.png" width="50px" height="50px"/></span>
             }
-           
+           </div>
             </div> 
             <hr className={styles.hr}></hr>
             

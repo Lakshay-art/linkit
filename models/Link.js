@@ -7,7 +7,8 @@ const LinkSchema=new mongoose.Schema({
      visits:{type:String},
      description:{type:String},
      color:{type:String},
-     tag:{type:String}
+     tag:{type:String},
+     priority:{type:String},
 },{timestamps:true});
 
 

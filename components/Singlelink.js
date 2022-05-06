@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jsCookie from 'js-cookie';
-import router from 'next/router';
+import router, { Router } from 'next/router';
 import React from 'react';
 import { server } from '../config';
 import styles from '../styles/Article.module.css'
@@ -9,6 +9,7 @@ import $ from 'jquery'
 
 //import script from 'next/script'
 import { useEffect } from 'react/cjs/react.production.min';
+import { toast } from '../lib/toast';
 //import { route } from 'next/dist/next-server/server/router';
 const Singlelink = (props) => {
     
@@ -95,7 +96,7 @@ const Singlelink = (props) => {
 }
 
 const edit=()=>{
-
+ options2();
    // const visits=props.details.visits;
     
     router.push({
@@ -104,21 +105,61 @@ const edit=()=>{
                  description:props.details.description,
                  link:props.details.link,
                  visits:props.details.visits,
-                 username:props.details.username
+                 username:props.details.username,
+                 priority:props.details.priority
     }
     }, '/addlink');
+
+}
+const options=()=>{
+ $(`#${props.details._id}options`).show('fast');
+}
+const options2=()=>{
+    $(`#${props.details._id}options`).hide('fast');
+   }
+const move=()=>{  options2();
+    if(router.pathname!="/profile"){
+        toast("Visit your profile to change position")
+        return;
+    }
+   
+  props.touchmove(props.details)
+ 
+}
+const moveclicked=()=>{  options2();
+  if(router.pathname!="/profile"){
+      toast("Visit your profile to change position")
+      return;
+  }
+  toast("Just Drag and Drop to reaarange when you have a mouse 😉")
+
 }
 
 const deletee=()=>{props.delete(props.details) ;
      setsurelyDelete("false")}
     return (
-        <div >
-        <div id={props.details._id+'2'} onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc} onDoubleClick={edit} className={styles.card} style={{background:`${props.details.color}`}} draggable="true" onDrag={()=>props.ondrag(props.details) } onDragOver={()=>props.dragover(props.details) } onDragEnd={()=>props.drop()} >
+        <div id={props.details._id+'3'} className="sortable" onClick={()=>props.dragover(props.details)}>
+            {/* <div className={styles.options} >-------------------------------------</div> */}
+           
+        <div id={props.details._id+'2'}  onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc}  className={styles.card} style={{background:`${props.details.color}`}} draggable="true" onDrag={()=>props.ondrag(props.details) }  onDragOver={()=>props.dragover(props.details) } onDragEnd={()=>props.drop()}   >
             
-            { 
+            <div className={styles.nameflex}>
               <a className={styles.border} onClick={gotoprofile} >{props.details.username}</a>
-             
-            }
+              {<div onPointerDown={options} style={{fontSize:"25px",marginRight:"0px"}}>︙
+              <div style={{background:`${props.details.color}`}} className={styles.options} id={props.details._id+"options"}>
+                <p style={{textAlign:"center"}} onTouchEnd={edit} onClick={edit}>
+                  {jsCookie.get("username")==props.details.username &&<span > Edit</span>}
+                  {jsCookie.get("username")!=props.details.username &&<span>Copy</span>}
+                  </p>
+                  <hr/>
+                <p onTouchStart={move} onClick={moveclicked}>
+                 Move
+                  </p>
+                </div>
+                </div>}
+             </div>
+            
+            
              <h2>
                 <p onClick={openlink}> {props.details.title}</p>
             </h2>

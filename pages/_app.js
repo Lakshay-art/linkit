@@ -41,6 +41,8 @@ React.useEffect(() => {
   return (
     <Layout>
       <Component {...pageProps} />
+      <div id="touchabsolutecopy" ><div></div></div>
+      {/* <div style={{position:"absolute"}} id="testt" ><div>cdcvdv</div></div> */}
     </Layout>
   )
 }

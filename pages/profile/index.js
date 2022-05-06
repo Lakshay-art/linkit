@@ -66,6 +66,7 @@ React.useEffect(async()=>{
        <h4 style={{margin:"5px"}}>{visits} visits</h4>
       
             <Friends friendslist={props.friendslist.userdata}/>
+           
         </>
     );
 };

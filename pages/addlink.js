@@ -123,7 +123,8 @@ setuser({...user,id:jsCookie.get('id'),'username':(router.query && router.query?
             'link':link.current.value,
             'color':map.get(tag),
             'tag':tag,
-            'visits':router.query?.visits||0
+            'visits':router.query?.visits||0,
+            'priority':router.query?.priority||0
         }).then((res)=>{//console.log(res.data)
           toast("Success!! Link Uploaded") ;},(err)=>{
               console.log(err)

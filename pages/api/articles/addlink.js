@@ -17,18 +17,22 @@ export default async function handler(req,res){
            username=correctusername;
            priority="0"
         }
+        //limiting links to 12
         const user=id;
+        const curruser=await User.findOne({"_id":user});
+        let nooflinks=curruser.nooflinks;
+        if(nooflinks==12)
+        return res.status(402).send("Reached the max limit of 12 links.");
+        
         const Linkk=await new Link({
             username,user,title,description,link,visits,color,tag,priority
         }) 
         await Linkk.save();
-        const curruser=await User.findOne({"_id":user});
-        let nooflinks=curruser.nooflinks;
+        
         if(isNaN(nooflinks))
         nooflinks="0"
         console.log(nooflinks)
-        if(nooflinks==11)
-        return res.status(402).send("Reached the max limit of 12 links.");
+        
         await User.updateOne({"_id":user},{"nooflinks":(Number)(nooflinks)+1+""})
         return res.status(200).send(Linkk);
     }

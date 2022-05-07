@@ -200,6 +200,9 @@ $("#touchabsolutecopy").css({
           compare();draggedOver=undefined;
           st=undefined
         }
+        else{
+          toast("Please drop it right above another link and not on empty space")
+        }
         
 
         

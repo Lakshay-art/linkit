@@ -262,7 +262,10 @@ toast(err);})
 
 const changeusername=async()=>{
   let currusername=newusername.current.value+"";
-    
+    if(currusername.includes(" ")){
+      toast("Username must not contain space")
+      return ;  
+    }
     if(currusername.length>8||currusername.length<3){
         toast("Username must be 3 to 8 characters long")
        return ;  

@@ -2,6 +2,7 @@
 import dbConnect from "../../../lib/dbConnect";
 import { verify } from "../../../lib/verifyuser";
 import Link from "../../../models/Link";
+import User from "../../../models/User";
 
 
 export default async function handler(req,res){await dbConnect();
@@ -13,10 +14,15 @@ export default async function handler(req,res){await dbConnect();
     if(username==    infofromheaders.username)
 {
      //  console.log(username+" "+linkid)
-        await Link.findOneAndDelete({_id:linkid},(err,ans)=>{
+     const curruser=await User.findOne({"username":username}); 
+     let nooflinks=curruser.nooflinks;
+        await Link.findOneAndDelete({_id:linkid},async(err,ans)=>{
             if(err)
         return res.status(404).send(err);
-            
+        
+       
+        await User.updateOne({"username":username},{"nooflinks":((Number)(nooflinks)-1)+""})
+       
             return res.status(200).send(ans)
             });
         }

@@ -10,6 +10,12 @@ export default async function handler(req,res){
       const user=infofromheaders._id; 
 
         const {newusername}=req.body;
+        let currusername=newusername+"";
+         if(currusername.length>8||currusername.length<3){
+         res.status(402).send("Username must be 3 to 8 characters long and must not contains space");
+        // toast("Username must be 3 to 8 characters long")
+        return ;  
+     }
         const alreadyexisted =await User.findOne({username:newusername});
         console.log("alreadyexisted"+alreadyexisted)
         if(!alreadyexisted){

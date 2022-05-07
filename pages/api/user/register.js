@@ -13,11 +13,26 @@ export default async function(req,res){
     //     }
     //     user=userdata;
     // }).clone().catch(function(err){ console.log(err)})
+      let currusername=username+"";
     if(user){
         res.status(401).send("already registered");
         return;
     }
-    
+    else if(email+""==""){
+        res.status(403).send("Please Provide an Email");
+        return
+    }
+    else if(password+""==""){
+        res.status(403).send("Please Provide an valid password");
+        return
+    }
+  
+
+    else if(currusername.length>8||currusername.length<3){
+        res.status(402).send("Username must be 3 to 8 characters long and must not contains space");
+       // toast("Username must be 3 to 8 characters long")
+       return ;  
+    }
     let salt=await bcrypt.genSalt(10);
     password= await bcrypt.hash(password,salt)
 

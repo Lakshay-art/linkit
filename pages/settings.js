@@ -154,8 +154,8 @@ const uploadPreset = "hello1"; // replace with your own upload preset
 //const [accesss, setaccesss] = React.useState();
 // const theaxios=axios.create();
 React.useEffect(async()=>{
-  $('#passwordinput').slideUp('slow');
-  $('#usernameinput').slideUp('slow');
+  $('#passwordinput').slideUp('fast');
+  $('#usernameinput').slideUp('fast');
 
 //   const accessTokenn= await refresh(jsCookie.get("id2"));
 //   console.log(accessTokenn);
@@ -261,6 +261,12 @@ toast(err);})
 }
 
 const changeusername=async()=>{
+  let currusername=newusername.current.value+"";
+    
+    if(currusername.length>8||currusername.length<3){
+        toast("Username must be 3 to 8 characters long")
+       return ;  
+    }
   await (await newaxios()).post(`${server}/api/user/changeusername`,{
     newusername:newusername.current.value,
     user:jsCookie.get("id"),
@@ -269,17 +275,24 @@ const changeusername=async()=>{
 }
 
 const openusernamechangeinput=()=>{
-  $('#usernameinput').slideToggle('slow');
+  $('#usernameinput').slideToggle('fast');
 }
 const openpwdchangeinput=()=>{
-  $('#passwordinput').slideToggle('slow');
+  $('#passwordinput').slideToggle('fast');
 }
 const changepwd=async()=>{
+  
+   
+    let currpwd=newpassword.current.value+"";
+     if(currpwd.length==0){
+      toast("Please Provide an valid password")
+     return ;  
+  }
   await (await newaxios()).post(`${server}/api/user/changepassword`,{
     userid:jsCookie.get("id"),
     password:newpassword.current.value,
   }).then((res)=>{toast("Success!! Password Changed") },(err)=>{console.log(err+" -=====================");
-  toast(err);})
+  toast(err.response.data);})
 
 }
   return (
@@ -290,9 +303,9 @@ const changepwd=async()=>{
         {/* <hr className={styles.hr}/> */}
         <div className={styles.div}> <button className={styles.button} id="upload_widget">Change Profile Pic</button></div>
         <div className={styles.div}> <button className={styles.button} onClick={openusernamechangeinput}>Change Username</button></div>
-        <div className={styles.div} id="usernameinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2}><p className={styles.input2}>New Username</p> <input style={{float:"left",paddingRight:"40px"}} className={styles.input} type="text" ref={newusername}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changeusername}  src="/tick.png" width="40px" height="40px"/></span></div>
+        <div className={styles.div} id="usernameinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2}><p className={styles.input2}>New Username</p> <input style={{float:"left",}} className={styles.input} type="text" ref={newusername}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changeusername}  src="/tick.png" width="40px" height="40px"/></span></div>
         <div className={styles.div}> <button  className={styles.button} onClick={openpwdchangeinput}>Change Password</button></div>
-        <div className={styles.div} id="passwordinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2} ><p className={styles.input2}>New Password</p> <input style={{float:"left",paddingRight:"40px"}} className={styles.input} type="text" ref={newpassword}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changepwd} src="/tick.png" width="40px" height="40px"/></span></div>
+        <div className={styles.div} id="passwordinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2} ><p className={styles.input2}>New Password</p> <input style={{float:"left",}} className={styles.input} type="text" ref={newpassword}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changepwd} src="/tick.png" width="40px" height="40px"/></span></div>
 
          <div className={styles.div}> <button className={styles.button} >Buy Premium</button></div>
         {/* <button onClick={()=>setpfp("poda")} id="update">Update</button> */}

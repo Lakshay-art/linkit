@@ -124,11 +124,12 @@ setuser({...user,id:jsCookie.get('id'),'username':(router.query && router.query?
             'color':map.get(tag),
             'tag':tag,
             'visits':router.query?.visits||0,
-            'priority':router.query?.priority||0
+            'priority':router.query?.priority||0,
+            'nooflinks':jsCookie.get("lc")
         }).then((res)=>{//console.log(res.data)
           toast("Success!! Link Uploaded") ;},(err)=>{
               console.log(err)
-            toast("Check your internet connection or Re-login")
+            toast(err.response.data)
         })
     }
 

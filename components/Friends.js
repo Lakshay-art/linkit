@@ -75,6 +75,7 @@ const compare = async(e) =>{
  
   var st;
    const touchmove=(details)=>{ 
+     
    // document.getElementsByTagName("body")[0].style.filter = "opacity(50%)";
     document.getElementById("touchabsolutecopy").style.filter = "opacity(85%)";
     draggedOver=undefined;
@@ -133,7 +134,7 @@ $("#touchabsolutecopy").css({
       
 
     }
-    else if((currY-window.scrollY)*zoom<(2*window.innerHeight)/5 && !isNaN(st)){
+    else if((currY-window.scrollY)*zoom<(1*window.innerHeight)/5 && !isNaN(st)){
      // console.log(currY*zoom +" "+((3*window.innerHeight)/5))
     console.log("poda")
     console.log(st)

@@ -9,6 +9,11 @@ export default async function handler(req,res){
      
       const userid=infofromheaders._id; 
          const {password}=req.body;
+         let currpwd=password+"";
+       if(ccurrpwd.length==0){
+        res.status(403).send("Please Provide an valid password");
+       return ;  
+    }
          const salt= await bcrypt.genSalt(10);
          const newpassword= await bcrypt.hash(password,salt);
          User.findOneAndUpdate({_id:userid},{password:newpassword},(err,response)=>{

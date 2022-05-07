@@ -48,6 +48,26 @@ const login = () => {
     }
 ///////////////////
 else if(state=='register'){
+    let currusername=name.current.value+"";
+    let curremail=email.current.value+"";
+    let currpwd=password.current.value+"";
+    if(currusername.length>8||currusername.length<3){
+        toast("Username must be 3 to 8 characters long")
+       return ;  
+    }
+    else if(currpwd.length>8||currpwd.length<3){
+        toast("Username must be 3 to 8 characters long")
+       return ;  
+    }
+    else if(currusername.includes(" ")){
+        toast("Username must not contain space")
+        return ;  
+    }
+    else if(!curremail.includes(".")||!curremail.includes("@")){
+        toast("Please provide a valid email address")
+        return ; 
+    }
+   
         axios.post(`${server}/api/user/register`,{
             username:name.current.value,
             password:password.current.value,

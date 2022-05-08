@@ -7,6 +7,7 @@ const Meta = ({ title, keywords, description }) => {
       <meta name='keywords' content={keywords} />
       <meta name='description' content={description} />
       <meta charSet='utf-8' />
+      <meta property="og:image" content="/icon2.png" />
       {/* <link rel='icon' href='/favicon.ico' /> */}
       <link rel="icon" href="/icon2.png"></link>
       <link rel="apple-touch-icon" href="/icon2.png"></link>
@@ -18,7 +19,7 @@ const Meta = ({ title, keywords, description }) => {
 Meta.defaultProps = {
   title: 'Linkerr',
   keywords: 'websites, share ,links',
-  description: 'Share your public links ,actually to the world',
+  description: 'Share your public links to the world',
 }
 
 export default Meta

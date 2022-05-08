@@ -10,7 +10,7 @@ const Nav = () => {
           <Link  href='/login'><a><Image className={navStyles.image} src="/admin3.png" width="55px" height="55x"/></a></Link>
         </li>
         <li>
-          <Link href='/'>EveryOne</Link>
+          <Link href='/everyOne'>EveryOne</Link>
         </li>
         {/* <li>
           <Link href='/friends'>Friends</Link>

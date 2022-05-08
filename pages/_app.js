@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import React from 'react'
 import $ from 'jquery'
+import Image from 'next/image';
  function  MyApp({ Component, pageProps }) {
 //   const access=await refresh(jsCookie.get("id2"));
 //   axios.interceptors.request.use(
@@ -37,11 +38,14 @@ React.useEffect(() => {
   $(document.body).css('zoom',zoom/100)
 }, [])
 
+const reportbug=()=>{
 
+}
   return (
     <Layout>
       <Component {...pageProps} />
       <div id="touchabsolutecopy" ><div></div></div>
+      <a href="mailto:lakshaymuseum123@gmail.com?subject=Report%20a%20Bug" className="bug"><Image src="/bug.png" height="70px" width="70px"/></a>
       {/* <div style={{position:"absolute"}} id="testt" ><div>cdcvdv</div></div> */}
     </Layout>
   )

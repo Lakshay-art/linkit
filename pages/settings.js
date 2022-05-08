@@ -310,7 +310,9 @@ const changepwd=async()=>{
         <div className={styles.div}> <button  className={styles.button} onClick={openpwdchangeinput}>Change Password</button></div>
         <div className={styles.div} id="passwordinput" style={{display:'flex',alignItems:'center'}}><div className={styles.div2} ><p className={styles.input2}>New Password</p> <input style={{float:"left",}} className={styles.input} type="text" ref={newpassword}/></div><span style={{marginLeft:"-35px"}}><Image  onClick={changepwd} src="/tick.png" width="40px" height="40px"/></span></div>
 
-         <div className={styles.div}> <button className={styles.button} >Buy Premium</button></div>
+         <div className={styles.div}> <button className={styles.button} onClick={()=>{
+           toast("Coming Soon!!")
+         }}>Buy Premium</button></div>
         {/* <button onClick={()=>setpfp("poda")} id="update">Update</button> */}
         
     </>

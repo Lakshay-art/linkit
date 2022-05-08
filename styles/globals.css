@@ -30,3 +30,10 @@ a {
   
   }
 } 
+.bug{
+  position: fixed;
+  left:20px;
+  bottom: 60px;
+
+
+}

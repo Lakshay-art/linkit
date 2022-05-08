@@ -6,7 +6,7 @@ const generateAccesssToken=(user)=>{
 }
 const generateRefreshToken =(user)=>{
     return jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},process.env.RSECRET_KEY,{
-        expiresIn:"100000s",
+        expiresIn:"5000000s",
     })
  }
 

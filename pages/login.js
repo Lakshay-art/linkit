@@ -6,7 +6,7 @@ import styles from '../styles/Login.module.css'
 import { server } from '../config';
 import $ from 'jquery'
 import {toast} from '../lib/toast'
-import Getmail from '../components/getmail';
+import Getmail from '../components/Getmail';
 
 
 

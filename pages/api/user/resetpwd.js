@@ -1,9 +1,11 @@
 import jwt from 'jsonwebtoken';
+import dbConnect from '../../../lib/dbConnect';
 import User from '../../../models/User';
 
 var nodemailer = require( 'nodemailer');
 export default async function(req,res){
     try{
+        await dbConnect();
     const usermail=req.body.usermail;
     const user=await User.findOne({"email":usermail})
     if(!user){

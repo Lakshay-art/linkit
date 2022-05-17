@@ -22,7 +22,7 @@
 .input2{
   
    
-   padding: 2px;
+   padding: 2px 5px;
    border: #b83ffe solid 2px;
    color: #b83ffe;
    font-weight: 700;
@@ -31,7 +31,7 @@
  margin: auto;
    border-radius: 30px;
    margin-bottom: -15px; background-color: #f5f5f5;
-
+  min-width:fit-content;
    width:35%;
   z-index: 10;
 
@@ -92,3 +92,20 @@
       box-shadow:inset -0px 0px 10px white;
       cursor:pointer;
   }
+  .email{
+    position:fixed;
+    top: 223px;
+    left:-60%;
+    max-width:250px;
+    min-width:250px;
+    margin-left:-125px;
+    border:#3db1fe solid 2px;
+    backdrop-filter: blur(10px);
+    z-index: 300;
+    /* background-color: #30b3ff11; */
+    background:linear-gradient(45deg, #88cef717 0%,#30b3ff1a 30%,#ff87f127 100%) ;
+    border-radius: 40px;
+    padding:10px;
+    zoom:90%;
+
+}

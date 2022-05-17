@@ -40,7 +40,7 @@ export default async function handler (req, res) {
     case 'GET':
       try {
         const links = await Link.find({})
-        //console.log(links)
+        console.log(links)
         res.json([...links])
       } catch (error) {
         res.json({ success: false })
@@ -55,6 +55,7 @@ export default async function handler (req, res) {
            console.log(error+"--------")
          }
          //console.log([...userdata]);
+         userdata.reverse();
          res.status(200).json([...userdata])
        })
       } catch (error) {

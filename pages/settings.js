@@ -244,14 +244,14 @@ document.getElementById("upload_widget").addEventListener(
 const setpfp=async(result)=>{
  // console.log(result)
  if(jsCookie.get("pfp")!="default"){
-await (await newaxios()).post(`${server}/api/user/deleteoldpfp`,{
+await (await newaxios(jsCookie.get("id2"))).post(`${server}/api/user/deleteoldpfp`,{
   public_id:jsCookie.get("pfp")
 }).then((res)=>{},(err)=>{console.log(err+" -=====================")})
 
  }
 jsCookie.set("pfp",result.info.public_id);
 
-  await (await newaxios()).post(`${server}/api/user/setpfp`,{
+  await (await newaxios(jsCookie.get("id2"))).post(`${server}/api/user/setpfp`,{
     username:jsCookie.get('username'),
     public_id:result.info.public_id,
   }).then((res)=>{
@@ -270,7 +270,7 @@ const changeusername=async()=>{
         toast("Username must be 3 to 8 characters long")
        return ;  
     }
-  await (await newaxios()).post(`${server}/api/user/changeusername`,{
+  await (await newaxios(jsCookie.get("id2"))).post(`${server}/api/user/changeusername`,{
     newusername:newusername.current.value,
     user:jsCookie.get("id"),
   }).then((res)=>{jsCookie.set("username",newusername.current.value);toast("Success!! Sign in with new username") ;jsCookie.set("id2","");router.push('/login')},(err)=>{console.log(err+" -=====================");
@@ -291,7 +291,7 @@ const changepwd=async()=>{
       toast("Please Provide an valid password")
      return ;  
   }
-  await (await newaxios()).post(`${server}/api/user/changepassword`,{
+  await (await newaxios(jsCookie.get("id2"))).post(`${server}/api/user/changepassword`,{
     userid:jsCookie.get("id"),
     password:newpassword.current.value,
   }).then((res)=>{toast("Success!! Password Changed") },(err)=>{console.log(err+" -=====================");

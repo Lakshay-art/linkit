@@ -38,9 +38,7 @@ React.useEffect(() => {
   $(document.body).css('zoom',zoom/100)
 }, [])
 
-const reportbug=()=>{
 
-}
   return (
     <Layout>
       <Component {...pageProps} />

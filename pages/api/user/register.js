@@ -15,7 +15,7 @@ export default async function(req,res){
     // }).clone().catch(function(err){ console.log(err)})
       let currusername=username+"";
     if(user){
-        res.status(401).send("already registered");
+        res.status(401).send("Already registered");
         return;
     }
     else if(email+""==""){

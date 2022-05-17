@@ -10,6 +10,9 @@ import Search from '../../components/Search';
 import Settings from '../../components/Settings';
 import Head from 'next/head';
 import axios from 'axios';
+import Image from 'next/image';
+import Meta from '../../components/Meta';
+import { toast } from '../../lib/toast';
 
 const profile = (props) => {
     const [visits, setvisits] = React.useState()
@@ -47,6 +50,23 @@ React.useEffect(async()=>{
         router.push("/login");
     }
 })
+const share=async()=>{
+
+    navigator.clipboard.writeText(`${window.location.href}/${jsCookie.get('username')}`);
+    toast("Link Copied to ClipBoard");
+    if (navigator.canShare) {
+
+        navigator.share({
+        // title: `${jsCookie.get('username')}'s Profile`,
+        text: `${jsCookie.get('username')}'s Profile`,
+        url: `${window.location.href}/${jsCookie.get('username')}`
+        })
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed', error));
+      } else {
+        console.log(`Your system doesn't support sharing files.`);
+      }
+}
     return (
         <>
         {/* <CloudinaryContext cloudName="lakshaythegupta">
@@ -57,12 +77,13 @@ React.useEffect(async()=>{
 </CloudinaryContext> */}
 <Head>
         <script src="https://upload-widget.cloudinary.com/global/all.js" ></script>
+       
         </Head>
         <Search/>
-        
+         <Meta title={`${jsCookie.get('username')}'s Profile`}/>
         <Settings public_id={props.friendslist.userinfo?.profilepic}/>
          {/* <h1>{props.friendslist[0].username}</h1> */}
-         <h2 style={{margin:"5px"}}>{jsCookie.get("username")}</h2>
+         <h2 style={{margin:"5px"}}>{jsCookie.get("username")}<span onClick={share}><Image src="/copy.png" height="25px" width="25px"/></span></h2>
        <h4 style={{margin:"5px"}}>{visits} visits</h4>
       
             <Friends friendslist={props.friendslist.userdata}/>

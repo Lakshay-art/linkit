@@ -6,6 +6,11 @@ import styles from '../styles/Login.module.css'
 import { server } from '../config';
 import $ from 'jquery'
 import {toast} from '../lib/toast'
+import Getmail from '../components/getmail';
+
+
+
+
 
 const login = () => {
    const[state,setstat]=React.useState('login');
@@ -29,7 +34,7 @@ const login = () => {
             jsCookie.set("search",res.data.username);
             jsCookie.set("id",res.data.id);
             jsCookie.set("loggedin","true");
-            jsCookie.set("id2",res.data.refreshToken,{ expires: 30 });
+            jsCookie.set("id2",res.data.refreshToken,{ expires: 60 });
            // console.log(res.data)
            // console.log("----------------------j------")
             jsCookie.set("pfp",res.data.profilepic);
@@ -55,8 +60,9 @@ else if(state=='register'){
         toast("Username must be 3 to 8 characters long")
        return ;  
     }
-    else if(currpwd.length>8||currpwd.length<3){
-        toast("Username must be 3 to 8 characters long")
+    else if(currpwd.length==0){
+        toast("Password cannot be empty")
+        
        return ;  
     }
     else if(currusername.includes(" ")){
@@ -91,7 +97,7 @@ else if(state=='register'){
     React.useEffect(async() => {
       
     
-     $("#email").slideUp('slow');
+     $("#email").slideUp('fast');
     }, [])
     
 
@@ -99,9 +105,11 @@ else if(state=='register'){
     setstat(a);
     if(a=="register"){
         $("#email").slideDown('slow');
+        $("#forgot").slideUp('fast');
     }
     else{
-        $("#email").slideUp('slow');
+        $("#email").slideUp('fast');
+        $("#forgot").slideDown('fast');
 
     }
      }
@@ -120,8 +128,14 @@ else if(state=='register'){
     //.error => to send json with 404
     //.response.data => to send a string =>.send("string")
     //.message =>??
+
+    const ShowName = ()=>{
+        // $('#useName').animate({left:"33%"}, 800);
+         $('#useName').animate({left:"50%"}, 800);
+     }
     return (
         <>
+        <Getmail/>
             <div className={styles.div}>
                   <div className={styles.flex} >
                     {
@@ -144,10 +158,12 @@ else if(state=='register'){
                 <div style={{width:"100%"}}><p className={styles.input2}>Username</p> <input className={styles.input} type="text" ref={name}/></div>
                 <div style={{width:"100%"}}><p className={styles.input2}>Password</p> <input className={styles.input} type="password"  ref={password}/></div>
                 <div id="email" style={{width:"100%"}}><p className={styles.input2}>Email</p> <input className={styles.input} type="email" ref={email}/></div>
+                <button id="forgot" className={styles.button} onClick={ShowName}>Forgot Password</button>
                 <hr className={styles.hr}/> 
                 <button className={styles.button} onClick={submit}>Submit</button>
                 {/* <button className={styles.button} onClick={logout}>LogOut</button> */}
               {/* </form> */}
+              
             </div>
         </>
     );

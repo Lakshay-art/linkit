@@ -23,7 +23,17 @@ export default async function handler(req,res){
         let nooflinks=curruser.nooflinks;
         if(nooflinks==12)
         return res.status(402).send("Reached the max limit of 12 links.");
-        
+        let currlink=link+"";
+
+        // if(!currlink.includes("www")){
+        //     currlink="www."+currlink;
+
+        // }
+        if(!currlink.includes("http")){
+            currlink="https://"+currlink;
+
+        }
+        link=currlink
         const Linkk=await new Link({
             username,user,title,description,link,visits,color,tag,priority
         }) 

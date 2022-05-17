@@ -10,6 +10,8 @@ import axios from 'axios';
 import styles from '../../styles/Profile.module.css'
 import Search from '../../components/Search';
 import Settings from '../../components/Settings';
+import Meta from '../../components/Meta';
+import Image from 'next/image';
 const profile = (props) => {
     const [visits, setvisits] = React.useState(0)
     const router=useRouter();
@@ -40,12 +42,30 @@ React.useEffect(async()=>{
        
     
 },[router.asPath])
+const share=async()=>{
 
+    navigator.clipboard.writeText(`${window.location.href}`);
+    toast("Link Copied to ClipBoard");
+
+    if (navigator.canShare) {
+
+        navigator.share({
+        // title: `${jsCookie.get('username')}'s Profile`,
+        text: `${jsCookie.get('search')}'s Profile`,
+        url: `${window.location.href}`
+        })
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed', error));
+      } else {
+        console.log(`Your system doesn't support sharing files.`);
+      }
+}
     return (
         <> 
         <Search/>
+        <Meta title={`${router.query.username}'s Profile`}/>
         <Settings public_id={props.friendslist.userinfo?.profilepic}/>
-       <h2 style={{margin:"5px"}}>{props.friendslist.userinfo?.username}</h2>
+       <h2 style={{margin:"5px"}}>{props.friendslist.userinfo?.username}<span onClick={share}><Image src="/copy.png" height="25px" width="25px"/></span></h2>
        <h4 style={{margin:"5px"}}>{visits} visits</h4>
       
        
@@ -65,6 +85,7 @@ export const getServerSideProps= async(request)=>{
     }else{
         search=cookies.search
     }
+    jsCookie.set('search',search)
     // const res=await fetch(`${server}/api/articles/profile`
     // ,{
     //     method:"POST",

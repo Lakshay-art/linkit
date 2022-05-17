@@ -115,7 +115,7 @@ setuser({...user,id:jsCookie.get('id'),'username':(router.query && router.query?
         }
         
       //  console.log(map.get(tag));
-       await(await newaxios()).post(`${server}/api/articles/addlink`,{
+       await(await newaxios(jsCookie.get("id2"))).post(`${server}/api/articles/addlink`,{
             'username':user.username,
             'id':user.id,
             'title':title.current.value,

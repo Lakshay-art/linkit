@@ -54,7 +54,7 @@ const compare = async(e) =>{
 
     const deletelink=async(link)=>{
       // const newaxios=
-         await (await newaxios()).post(`${server}/api/articles/removelink`,{
+         await (await newaxios(jsCookie.get("id2"))).post(`${server}/api/articles/removelink`,{
              username:jsCookie.get("username"),
              linkid:link._id,
          }).then((res)=>{

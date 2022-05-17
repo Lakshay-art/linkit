@@ -138,7 +138,7 @@ const moveclicked=()=>{  options2();
 const deletee=()=>{props.delete(props.details) ;
      setsurelyDelete("false")}
     return (
-        <div id={props.details._id+'3'} className="sortable" onClick={()=>props.dragover(props.details)}>
+        <div id={props.details._id+'3'} className="sortable"  onClick={()=>props.dragover(props.details)}>
             {/* <div className={styles.options} >-------------------------------------</div> */}
            
         <div id={props.details._id+'2'}  onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc}  className={styles.card} style={{background:`${props.details.color}`}} draggable="true" onDrag={()=>props.ondrag(props.details) }  onDragOver={()=>props.dragover(props.details) } onDragEnd={()=>props.drop()}   >

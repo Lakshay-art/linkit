@@ -13,7 +13,7 @@ export default async function(req,res){
         const token= jwt.sign({username:user.username,_id:user._id,isPremium:user.isPremium},process.env.RSECRET_KEY,{
             expiresIn:"43200s",
          })
-    var transporter = nodemailer.createTransport({
+    var transporter = await nodemailer.createTransport({
     service:'gmail',
     auth: {
          user:'lakshaymuseum123@gmail.com',
@@ -38,10 +38,10 @@ export default async function(req,res){
             <strong style='color:red'><p>Don't share this mail with any one</p>
              <p>Link will expire after 12 hours.</p></strong>`
     };
-    transporter.sendMail(mailoptions, function(error, info){
+    await transporter.sendMail(mailoptions, function(error, info){
     if (error)
     {
-    console.log(error);
+    return console.log(error);
     } else {
     console. log ('Email sent:' + info. response);
     }
@@ -49,7 +49,7 @@ export default async function(req,res){
 
     }
     catch(err){
-       console.log(err)
+       return console.log(err)
     }
-res.status(200).send("a");
+return res.status(200).send("a");
 }

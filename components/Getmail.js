@@ -23,7 +23,7 @@ const Getmail = () => {
     usermail:email.current.value,
     }).then((res)=>{
        // console.log(res.data);
-      // toast("Registered Successfully!!")
+       toast("Check your mail!!")
     },(err)=>{
        
         if (err.response) {

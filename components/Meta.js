@@ -9,8 +9,8 @@ const Meta = ({ title, keywords, description,ogimage }) => {
       <meta charSet='utf-8' />
       <meta property="og:image" content={ogimage} />
       {/* <link rel='icon' href='/favicon.ico' /> */}
-      <link rel="icon" href="/icon2.png"></link>
-      <link rel="apple-touch-icon" href="/icon2.png"></link>
+      <link rel="icon" href={ogimage}></link>
+      <link rel="apple-touch-icon" href={ogimage}></link>
       <title>{title}</title>
     </Head>
   )

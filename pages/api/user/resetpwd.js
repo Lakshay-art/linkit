@@ -6,7 +6,7 @@ var nodemailer = require( 'nodemailer');
 export default async function(req,res){
     try{
         await dbConnect();
-    const usermail=req.body.usermail;
+    const usermail=req.body.usermail+"";
     const user=await User.findOne({"email":usermail})
     if(!user){
         return res.status(500).send("No user found on this email address");
@@ -25,7 +25,7 @@ export default async function(req,res){
     
     var mailoptions = {
     from:'lakshaymuseum123@gmail.com',
-    to:usermail,
+    to:usermail.trim(),
     subject: "Password Reset link for your Linkerr account",
     text:
    `

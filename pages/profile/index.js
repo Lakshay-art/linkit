@@ -80,7 +80,7 @@ const share=async()=>{
        
         </Head>
         <Search/>
-         <Meta title={`${jsCookie.get('username')}'s Profile`}/>
+          <Meta title={`${jsCookie.get('username')}'s Profile`} ogimage={`https://res.cloudinary.com/lakshaythegupta/image/upload/${props.friendslist.userinfo?.profilepic}`}/>
         <Settings public_id={props.friendslist.userinfo?.profilepic}/>
          {/* <h1>{props.friendslist[0].username}</h1> */}
          <h2 style={{margin:"5px"}}>{jsCookie.get("username")}<span onClick={share}><Image src="/copy.png" height="25px" width="25px"/></span></h2>

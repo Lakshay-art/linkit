@@ -12,6 +12,7 @@ import Search from '../../components/Search';
 import Settings from '../../components/Settings';
 import Meta from '../../components/Meta';
 import Image from 'next/image';
+import { toast } from '../../lib/toast';
 const profile = (props) => {
     const [visits, setvisits] = React.useState(0)
     const router=useRouter();
@@ -63,7 +64,7 @@ const share=async()=>{
     return (
         <> 
         <Search/>
-        <Meta title={`${router.query.username}'s Profile`}/>
+        <Meta title={`${router.query.username}'s Profile`} ogimage={`https://res.cloudinary.com/lakshaythegupta/image/upload/${props.friendslist.userinfo?.profilepic}`}/>
         <Settings public_id={props.friendslist.userinfo?.profilepic}/>
        <h2 style={{margin:"5px"}}>{props.friendslist.userinfo?.username}<span onClick={share}><Image src="/copy.png" height="25px" width="25px"/></span></h2>
        <h4 style={{margin:"5px"}}>{visits} visits</h4>

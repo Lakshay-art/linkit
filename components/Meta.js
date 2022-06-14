@@ -20,7 +20,7 @@ Meta.defaultProps = {
   title: 'Linkerr',
   keywords: 'websites, share ,links',
   description: 'Share your public links to the world',
-  ogimage:"/icon2.png"
+  //ogimage:"/icon2.png"
 }
 
 export default Meta

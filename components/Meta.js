@@ -12,6 +12,9 @@ const Meta = ({ title, keywords, description,ogimage }) => {
       <link rel="icon" href={ogimage}></link>
       <link rel="apple-touch-icon" href={ogimage}></link>
       <title>{title}</title>
+      <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182048278368462`}
+      // <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.AD}`}
+     crossOrigin="anonymous"></script>
     </Head>
   )
 }

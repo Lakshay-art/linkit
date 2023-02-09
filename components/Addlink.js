@@ -18,6 +18,7 @@ const Addlink = (props) => {
         ["youtu.be",""],
         ["pinterest",""],
         ["other","linear-gradient(45deg, #33ccff 0%, #ff99cc 100%)"]
+
     ]);
     const[user,setuser]=React.useState({
           id:"",

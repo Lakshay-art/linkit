@@ -141,7 +141,7 @@ const deletee=()=>{props.delete(props.details) ;
         <div id={props.details._id+'3'} className="sortable"  onClick={()=>props.dragover(props.details)}>
             {/* <div className={styles.options} >-------------------------------------</div> */}
            
-        <div id={props.details._id+'2'}  onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc}  className={styles.card} style={{background:`${props.details.color}`}} draggable="true" onDrag={()=>props.ondrag(props.details) }  onDragOver={()=>props.dragover(props.details) } onDragEnd={()=>props.drop()}   >
+        <div id={props.details._id+'2'}  onMouseEnter={opendisfunc} onMouseLeave={hidedisfunc}  className={styles.card} style={{backgroundImage:`${props.details.color}`}} draggable="true" onDrag={()=>props.ondrag(props.details) }  onDragOver={()=>props.dragover(props.details) } onDragEnd={()=>props.drop()}   >
             
             <div className={styles.nameflex}>
               <a className={styles.border} onClick={gotoprofile} >{props.details.username}</a>

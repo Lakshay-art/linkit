@@ -32,7 +32,8 @@ const addlink=(props)=>{
         ["tiktok","linear-gradient(45deg,#01e8ee 10%,#000 50%,#000 70% ,#ee054d 100%)"],
         ["leetcode","linear-gradient(45deg,#000 10%,#f19915 60%,#aaaaaa 100%)"],
         ["wordpress","linear-gradient(45deg,#31363b 0%,#000 150%)"],
-        ["other","linear-gradient(45deg, #88cef7 0%,#30b3ff 30%,#ff87f1 100%)"]
+        ["other","linear-gradient(45deg, #88cef7 0%,#30b3ff 30%,#ff87f1 100%)"],
+        ["poda","linear-gradient(45deg,transparent 6%,red 6%,rgb(255,0,0) 94%,transparent 94%);"]
     ]);
     // const [access, setaccess] = React.useState("");
     const[user,setuser]=React.useState({

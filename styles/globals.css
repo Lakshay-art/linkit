@@ -133,7 +133,11 @@ button {
 }
 
 .button-border.angle-225 {
-  background: linear-gradient(225deg, transparent 7px, #993029 7px,rgba(209, 79, 88, 1),rgba(54, 77, 154, 1),rgba(255, 79, 68, 1));
+  /* background: linear-gradient(225deg, transparent 7px, #993029 7px,rgba(209, 79, 88, 1),rgba(54, 77, 154, 1),rgba(255, 79, 68, 1)); */
+  background: red;
+  /* background: linear-gradient(225deg,rgba(209, 79, 88, 1),rgba(54, 77, 154, 1),rgba(255, 79, 68, 1)); */
+  /* -webkit-mask-image:linear-gradient(45deg, transparent 7px, #cd413a 7px) */
+  -webkit-mask-image: linear-gradient(45deg,transparent 7px,#cd413a 0);
 }
 
 .button-background.angle-225 {

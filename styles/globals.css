@@ -37,12 +37,122 @@ a {
 
 
 }
-#abc{
-  background: -moz-linear-gradient(45deg, rgba(30,87,153,0) 0%, rgba(30,87,153,0.8) 7%, rgba(30,87,153,0.8) 10%, rgba(30,87,153,1) 90%, rgba(30,87,153,0.85) 93%, rgba(30,87,153,0.8) 94%, rgba(30,87,153,0) 100%); /* FF3.6-15 */
-  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(30,87,153,0)), color-stop(7%,rgba(30,87,153,0.8)), color-stop(10%,rgba(30,87,153,0.8)), color-stop(90%,rgba(30,87,153,1)), color-stop(93%,rgba(30,87,153,0.85)), color-stop(94%,rgba(30,87,153,0.8)), color-stop(100%,rgba(30,87,153,0))); /* Chrome4-9,Safari4-5 */
-  background: -webkit-linear-gradient(45deg, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 7%,rgba(30,87,153,0.8) 10%,rgba(30,87,153,1) 90%,rgba(30,87,153,0.85) 93%,rgba(30,87,153,0.8) 94%,rgba(30,87,153,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: -o-linear-gradient(45deg, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 7%,rgba(30,87,153,0.8) 10%,rgba(30,87,153,1) 90%,rgba(30,87,153,0.85) 93%,rgba(30,87,153,0.8) 94%,rgba(30,87,153,0) 100%); /* Opera 11.10-11.50 */
-  background: -ms-linear-gradient(45deg, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 7%,rgba(30,87,153,0.8) 10%,rgba(30,87,153,1) 90%,rgba(30,87,153,0.85) 93%,rgba(30,87,153,0.8) 94%,rgba(30,87,153,0) 100%); /* IE10 preview */
-  background: linear-gradient(45deg, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 7%,rgba(30,87,153,0.8) 10%,rgba(30,87,153,1) 90%,rgba(30,87,153,0.85) 93%,rgba(30,87,153,0.8) 94%,rgba(30,87,153,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#001e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.button-main {
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+  cursor: pointer;
+  max-width: max-content;
+}
+.button-text-wrapper {
+  display: flex;
+  white-space: pre;
+  justify-content: center;
+  border-radius: 2px;
+  color: white;
+  font-family: "Rigid Square";
+  transition: all 0.2s;
+  z-index: 2;
+  padding-block: 12px;
+  padding-inline: 8px;
+  font-size: 16px;
+}
+
+.button-text-wrapper > span::after {
+  content: url("data:image/svg+xml,%3Csvg width='18' height='17' viewBox='0 0 21 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='1' d='M13.0859 12.4766C12.8906 12.3203 12.8125 12.0859 12.8125 11.8125C12.8125 11.5781 12.8906 11.3438 13.0859 11.1875L16.7969 7.4375H0.9375C0.390625 7.4375 0 7.04688 0 6.5C0 5.99219 0.390625 5.5625 0.9375 5.5625H16.7969L13.0859 1.85156C12.6953 1.5 12.6953 0.914062 13.0859 0.5625C13.4375 0.171875 14.0234 0.171875 14.4141 0.5625L19.7266 5.875C20.0781 6.22656 20.0781 6.8125 19.7266 7.16406L14.4141 12.4766C14.0234 12.8672 13.4375 12.8672 13.0859 12.4766Z' fill='%23fff'%3E%3C/path%3E%3C/svg%3E");
+  position: absolute;
+  opacity: 0;
+  right: 24px;
+  transition: 0.5s;
+}
+.button-text-wrapper:hover > span::after {
+  opacity: 1;
+  right: 12px;
+}
+
+.button-text-wrapper > span {
+  transition: 0.2s;
+  position: relative;
+  width: fit-content;
+  padding: 0px 15px;
+  display: flex;
+  justify-content: center;
+  padding-inline: 25px;
+}
+
+.button-text-wrapper:hover > span {
+  padding-left: 15px;
+  padding-right: 35px;
+}
+
+@media (max-width: 767px) {
+  .button-text-wrapper span::after {
+    opacity: 1;
+    right: 12px;
+  }
+
+  .button-text-wrapper:hover > span::after {
+    opacity: 1;
+    right: 12px;
+  }
+
+  .button-text-wrapper > span {
+    padding-right: 35px;
+    padding-left: 15px;
+  }
+
+  .button-text-wrapper:hover > span {
+    padding-right: 35px;
+    padding-left: 15px;
+  }
+}
+
+.button-background-wrapper {
+  display: flex;
+  flex-grow: 1;
+  height: 42px;
+  margin-top: -43px;
+  position: relative;
+}
+.button-border {
+  background: linear-gradient(45deg, transparent 7px, #993029 7px);
+  flex-grow: 1;
+  display: flex;
+  z-index: 1;
+}
+
+.button-background {
+  background: linear-gradient(45deg, transparent 7px, #cd413a 7px);
+  flex-grow: 1;
+  z-index: 1;
+}
+
+.button-border.angle-225 {
+  background: linear-gradient(225deg, transparent 7px, #993029 7px,rgba(209, 79, 88, 1),rgba(54, 77, 154, 1),rgba(255, 79, 68, 1));
+}
+
+.button-background.angle-225 {
+  background: linear-gradient(225deg, transparent 7px, #cd413a 7px);
+}
+button.disabled .button-background {
+  background: transparent;
+}
+button.disabled .button-border {
+  background: linear-gradient(45deg, transparent 7px, #682525 7px);
+}
+button.disabled .button-border.angle-225 {
+  background: linear-gradient(225deg, transparent 7px, #682525 7px);
+}
+
+button.disabled .button-text-wrapper {
+  opacity: 0.4;
+}
+
+button.disabled {
+  pointer-events: none;
 }

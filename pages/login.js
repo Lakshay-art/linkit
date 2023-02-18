@@ -165,7 +165,29 @@ else if(state=='register'){
               {/* </form> */}
               
             </div>
-            <div style={{height:"100px",width:"200px"}} id="abc"></div>
+            <button>
+      <div class="button-main">
+        <div class="button-text-wrapper">
+          <span>SEND VERIFICATION LINK</span>
+        </div>
+
+        <div class="button-background-wrapper">
+          <div class="button-border">
+            <div
+              class="button-background"
+              style="margin: 2.5px; margin-right: 0px"
+            ></div>
+          </div>
+
+          <div class="button-border angle-225" style="margin-left: -1px">
+            <div
+              class="button-background angle-225"
+              style="margin: 2.5px; margin-left: -1px"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </button>
         </>
     );
 };

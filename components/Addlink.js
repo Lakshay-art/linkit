@@ -83,7 +83,7 @@ const redirectit=()=>{
                                     <button onClick={previewlink}>Preview</button>
                                     <textarea placeholder="Tell more about it to your audience" ref={description}></textarea>
                                     <button onClick={upload}>Upload</button>
-                                    <button onClick={upload}>Upload</button>
+                                    {/* <button onClick={upload}>Upload</button> */}
                                 </>}
        </>
          
